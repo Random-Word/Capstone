@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request, redirect, dill
-import requests
+#!/usr/bin/env python3
+
+from flask import Flask, render_template, request, redirect
+import dill
+import requests as rq
 from creds import API_KEY
+import ujson
 
 app = Flask(__name__)
 
 TCIA_ADDRESS = 'https://tcia.p.mashape.com/'
+STUDY = 'TCIA-BGM'
 #getPatientStudy
 
 @app.route('/')
@@ -17,8 +22,10 @@ def index():
 
 @app.route('/gallery')
 def gallery():
-    response = requests.get(TCIA_ADDRESS)
-    div=""
+    response = rq.get(TCIA_ADDRESS+'getPatientStudy/'+STUDY)
+    test = ujson.loads(response.text)
+
+    div="test"
     script=""
     return render_template('gallery.html', script=script, div=div)
 
