@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.9.2.min.css" type="text/css" />
+    <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.9.2.min.js"></script>
+    {{ script | safe }}
+  </head>
+  <body>
+    <form id='input' method='post' action='/plot'>
+      Ticker symbol: <input type='text' name='ticker' />   <input type="submit" value="Submit">
+    </form> 
+    <div class=page>
+      {{ div | safe }}
+    </div>
+  </body>
+</html>
